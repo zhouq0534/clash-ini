@@ -1,5 +1,5 @@
 
-IP-CIDR,10.10.10.0/24,no-resolve
+# IP-CIDR,10.10.10.0/24,no-resolve
 
 # 直连补充列表(国内域名不解析时，防止走代理使用)
 
@@ -18,7 +18,7 @@ DOMAIN-SUFFIX,hao123.com
 DOMAIN-KEYWORD,baidu
 
 # IP段匹配
-IP-CIDR,219.146.1.66/32,no-resolve
+# IP-CIDR,219.146.1.66/32,no-resolve
 
 # 国内DNS
 DOMAIN-SUFFIX,dns.alidns.com
