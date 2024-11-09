@@ -5,7 +5,6 @@ IP-CIDR,10.10.10.0/24,no-resolve
 
 DOMAIN-SUFFIX,m-team.io
 DOMAIN-SUFFIX,m-team.cc
-DOMAIN-SUFFIX,m-team.co
 DOMAIN-SUFFIX,zmpt.cc
 DOMAIN-SUFFIX,ip.sb
 
