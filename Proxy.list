@@ -3,8 +3,6 @@ DOMAIN-SUFFIX,thetvdb.com
 DOMAIN-SUFFIX,modelmediaasia.com
 DOMAIN-SUFFIX,github.com
 DOMAIN-SUFFIX,m-team.co
-DOMAIN-SUFFIX,cursor.com
-DOMAIN-SUFFIX,cursor.sh
 DOMAIN-SUFFIX,pkgs.dev.azure.com
 DOMAIN-SUFFIX,api.nuget.org
 DOMAIN-SUFFIX,jetstack.io
@@ -13,5 +11,4 @@ DOMAIN-SUFFIX,a4k.net
 DOMAIN-SUFFIX,bitchesgirls.tv
 DOMAIN-SUFFIX,faviconkit.com
 DOMAIN-SUFFIX,dorcelclub.com
-DOMAIN-SUFFIX,smithery.ai
 DOMAIN-SUFFIX,sgpjs.app
