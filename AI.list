@@ -22,6 +22,7 @@ DOMAIN-SUFFIX,gemini.google.com
 DOMAIN-SUFFIX,makersuite.google.com
 DOMAIN-SUFFIX,anthropic.com
 DOMAIN-SUFFIX,claude.ai
+DOMAIN-SUFFIX,claude.com
 DOMAIN-SUFFIX,ideogram.ai
 DOMAIN-SUFFIX,krea.ai
 DOMAIN-SUFFIX,leonardo.ai
@@ -41,6 +42,7 @@ DOMAIN-SUFFIX,openai.com
 DOMAIN-SUFFIX,oaistatic.com
 DOMAIN-SUFFIX,oaiusercontent.com
 DOMAIN-SUFFIX,auth0.openai.com
+
 
 
 
