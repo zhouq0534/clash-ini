@@ -37,11 +37,18 @@ DOMAIN-SUFFIX,cursor.sh
 DOMAIN-SUFFIX,smithery.ai
 DOMAIN-SUFFIX,platform.openai.com
 
+
+IP-CIDR,13.107.213.64/26,no-resolve
+IP-CIDR,20.36.0.0/16,no-resolve
+# OpenAI 使用的 Cloudflare IP 段
+IP-CIDR,104.18.0.0/16,no-resolve
+
 DOMAIN-SUFFIX,chatgpt.com
 DOMAIN-SUFFIX,openai.com
 DOMAIN-SUFFIX,oaistatic.com
 DOMAIN-SUFFIX,oaiusercontent.com
 DOMAIN-SUFFIX,auth0.openai.com
+
 
 
 
