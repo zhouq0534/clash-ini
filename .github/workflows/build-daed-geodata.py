@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build dae ext geodata files from Clash-style Direct/Proxy lists."""
+"""Build dae ext geodata files from dedicated daed rule lists."""
 
 import ipaddress
 import sys
@@ -71,29 +71,37 @@ def parse_clash(text: str):
             continue
         parts = [p.strip() for p in line.split(",")]
         kind = parts[0].upper()
-        if len(parts) < 2:
-            continue
-        if kind in ("DOMAIN-SUFFIX", "DOMAIN"):
-            domains.append((2, parts[1]))
-        elif kind == "FULL":
-            domains.append((3, parts[1]))
-        elif kind == "DOMAIN-KEYWORD":
-            domains.append((0, parts[1]))
-        elif kind in ("IP-CIDR", "IP-CIDR6"):
+        if kind in ("IP-CIDR", "IP-CIDR6") and len(parts) >= 2:
             try:
                 nets.append(ipaddress.ip_network(parts[1], strict=False))
             except ValueError:
                 print(f"skip invalid CIDR: {parts[1]}", file=sys.stderr)
+            continue
+        if kind in ("DOMAIN-SUFFIX", "DOMAIN") and len(parts) >= 2:
+            domains.append((2, parts[1]))
+        elif kind == "FULL" and len(parts) >= 2:
+            domains.append((3, parts[1]))
+        elif kind == "DOMAIN-KEYWORD" and len(parts) >= 2:
+            domains.append((0, parts[1]))
+        elif "/" in line:
+            try:
+                nets.append(ipaddress.ip_network(parts[0], strict=False))
+            except ValueError:
+                print(f"skip invalid CIDR: {parts[0]}", file=sys.stderr)
+        else:
+            domains.append((2, parts[0]))
     return domains, nets
 
 
 def main() -> int:
-    if len(sys.argv) != 5:
-        print("usage: build-daed-geodata.py <direct.list> <proxy.list> <custom.dat> <custom-ip.dat>")
+    if len(sys.argv) != 7:
+        print("usage: build-daed-geodata.py <direct-domain.list> <direct-ip.list> <proxy-domain.list> <proxy-ip.list> <custom.dat> <custom-ip.dat>")
         return 2
-    direct_path, proxy_path, dat_path, ip_dat_path = map(Path, sys.argv[1:])
-    direct_domains, direct_nets = parse_clash(direct_path.read_text())
-    proxy_domains, _ = parse_clash(proxy_path.read_text())
+    direct_domain_path, direct_ip_path, proxy_domain_path, proxy_ip_path, dat_path, ip_dat_path = map(Path, sys.argv[1:])
+    direct_domains, _ = parse_clash(direct_domain_path.read_text())
+    _, direct_nets = parse_clash(direct_ip_path.read_text())
+    proxy_domains, _ = parse_clash(proxy_domain_path.read_text())
+    _, proxy_nets = parse_clash(proxy_ip_path.read_text())
     dat_path.parent.mkdir(parents=True, exist_ok=True)
     ip_dat_path.parent.mkdir(parents=True, exist_ok=True)
     dat_path.write_bytes(geosite_list([
@@ -102,8 +110,9 @@ def main() -> int:
     ]))
     ip_dat_path.write_bytes(geoip_list([
         ("direct", direct_nets),
+        ("proxy", proxy_nets),
     ]))
-    print(f"built: direct={len(direct_domains)} proxy={len(proxy_domains)} direct_ip={len(direct_nets)}")
+    print(f"built: direct_domains={len(direct_domains)} direct_ip={len(direct_nets)} proxy_domains={len(proxy_domains)} proxy_ip={len(proxy_nets)}")
     return 0
 
 
