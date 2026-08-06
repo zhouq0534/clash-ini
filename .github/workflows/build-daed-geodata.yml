@@ -12,6 +12,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: build-daed-geodata
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -34,5 +38,6 @@ jobs:
             echo "No geodata changes"
           else
             git commit -m "build daed geodata"
+            git pull --rebase origin main
             git push
           fi
