@@ -27,13 +27,13 @@ jobs:
           python-version: "3.12"
 
       - name: Build geodata files
-        run: python .github/workflows/build-daed-geodata.py daed/direct-domain.list daed/direct-ip.list daed/proxy-domain.list daed/proxy-ip.list dist/custom.dat dist/custom-ip.dat
+        run: python .github/workflows/build-daed-geodata.py daed/direct-domain.list daed/direct-ip.list daed/proxy-domain.list daed/proxy-ip.list dist/custom.dat dist/custom-ip.dat mosdns/direct_domains.txt
 
       - name: Commit built geodata
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add dist/custom.dat dist/custom-ip.dat
+          git add dist/custom.dat dist/custom-ip.dat mosdns/direct_domains.txt
           if git diff --cached --quiet; then
             echo "No geodata changes"
           else
