@@ -1,10 +1,1 @@
-domain:baidu.com
-domain:taobao.com
-domain:qq.com
-domain:163.com
-domain:jd.com
-domain:gov.cn
-domain:edu.cn
-domain:ustc.edu.cn
 domain:test-ipv6.com
-domain:jomoxc.com
