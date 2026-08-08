@@ -6,6 +6,7 @@ on:
     paths:
       - "daed/*.list"
       - "mosdns/no_ipv6_domains.txt"
+      - "mosdns/ipv6_whitelist.txt"
       - ".github/workflows/build-daed-geodata.yml"
       - ".github/workflows/build-daed-geodata.py"
   workflow_dispatch:
