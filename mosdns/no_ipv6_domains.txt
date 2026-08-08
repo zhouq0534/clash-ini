@@ -1,2 +1,2 @@
-domain:miguvideo.com
+domain:live.miguvideo.com
 domain:cmvideo.cn
