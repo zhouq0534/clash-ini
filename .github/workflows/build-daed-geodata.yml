@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - "daed/*.list"
+      - "mosdns/no_ipv6_domains.txt"
       - ".github/workflows/build-daed-geodata.yml"
       - ".github/workflows/build-daed-geodata.py"
   workflow_dispatch:
