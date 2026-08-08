@@ -94,16 +94,17 @@ def parse_clash(text: str):
 
 
 def main() -> int:
-    if len(sys.argv) != 7:
-        print("usage: build-daed-geodata.py <direct-domain.list> <direct-ip.list> <proxy-domain.list> <proxy-ip.list> <custom.dat> <custom-ip.dat>")
+    if len(sys.argv) != 8:
+        print("usage: build-daed-geodata.py <direct-domain.list> <direct-ip.list> <proxy-domain.list> <proxy-ip.list> <custom.dat> <custom-ip.dat> <mosdns/direct_domains.txt>")
         return 2
-    direct_domain_path, direct_ip_path, proxy_domain_path, proxy_ip_path, dat_path, ip_dat_path = map(Path, sys.argv[1:])
+    direct_domain_path, direct_ip_path, proxy_domain_path, proxy_ip_path, dat_path, ip_dat_path, mosdns_path = map(Path, sys.argv[1:])
     direct_domains, _ = parse_clash(direct_domain_path.read_text())
     _, direct_nets = parse_clash(direct_ip_path.read_text())
     proxy_domains, _ = parse_clash(proxy_domain_path.read_text())
     _, proxy_nets = parse_clash(proxy_ip_path.read_text())
     dat_path.parent.mkdir(parents=True, exist_ok=True)
     ip_dat_path.parent.mkdir(parents=True, exist_ok=True)
+    mosdns_path.parent.mkdir(parents=True, exist_ok=True)
     dat_path.write_bytes(geosite_list([
         ("direct", direct_domains),
         ("proxy", proxy_domains),
@@ -112,7 +113,8 @@ def main() -> int:
         ("direct", direct_nets),
         ("proxy", proxy_nets),
     ]))
-    print(f"built: direct_domains={len(direct_domains)} direct_ip={len(direct_nets)} proxy_domains={len(proxy_domains)} proxy_ip={len(proxy_nets)}")
+    mosdns_path.write_text("\n".join(domain for _, domain in direct_domains) + "\n")
+    print(f"built: direct_domains={len(direct_domains)} direct_ip={len(direct_nets)} proxy_domains={len(proxy_domains)} proxy_ip={len(proxy_nets)} mosdns_direct={len(direct_domains)}")
     return 0
 
 
