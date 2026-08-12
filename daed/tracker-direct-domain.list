@@ -1,0 +1,4 @@
+# Tracker domains that must always go direct
+# RouterOS refresh script resolves these domains into CN-auto
+m-team.cc
+zmpt.cc
