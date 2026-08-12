@@ -1,4 +1,5 @@
 # rebuilt by daed action
+# tracker direct domains are refreshed by RouterOS from tracker-direct-domain.list
 ip.sb
 aliyuncs.com
 icanhazip.com
