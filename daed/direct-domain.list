@@ -1,16 +1,5 @@
 # rebuilt by daed action
 # tracker and PT web domains are also refreshed by RouterOS from tracker-direct-domain.list
-# China Apple/iCloud services observed in daed logs (keep direct for China accounts)
-icloud.com
-icloud.com.cn
-icloud-content.com
-icloud-content.com.cn
-apple-cloudkit.com
-apple-dns.net
-apple-dns.cn
-aaplimg.com
-mzstatic.com
-yebinnet.com
 ip.sb
 aliyuncs.com
 icanhazip.com
