@@ -1,3 +1,13 @@
+icloud.com
+icloud.com.cn
+icloud-content.com
+icloud-content.com.cn
+apple-cloudkit.com
+apple-dns.net
+apple-dns.cn
+aaplimg.com
+mzstatic.com
+yebinnet.com
 ip.sb
 aliyuncs.com
 icanhazip.com
