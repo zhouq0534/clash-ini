@@ -76,3 +76,19 @@ walmart.com
 bangumi.tv
 bgm.tv
 docker.com
+
+# MoviePilot external metadata and media providers
+acoustid.org
+amll.dev
+anilist.co
+coverartarchive.org
+imdb.com
+listenbrainz.org
+lrclib.net
+media-imdb.com
+musicbrainz.org
+pythonhosted.org
+pypi.org
+theaudiodb.com
+tmdb.org
+trace.moe
